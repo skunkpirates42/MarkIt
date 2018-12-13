@@ -1,3 +1,5 @@
 'use strict';
 /* global $, cuid */
-console.log($, cuid());
+$(function () {
+  console.log('page loaded');
+})

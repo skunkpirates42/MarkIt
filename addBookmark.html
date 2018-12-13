@@ -14,15 +14,26 @@
       <h1>My Bookmarks</h1>
     </header>
     <section class="controls-container">
-      <button class="btn add-bookmark">Add Bookmark</button>
-      <select class="min-rating">
-        <option>Minimum Rating</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+      <form id="add-bookmark-form">
+          <h3>Create a Bookmark:</h3>
+          <input type="text" placeholder="title">
+          <input type="url" placeholder="url">
+          <textarea rows="4" col="50"></textarea>
+          <div class="radio-container">
+            <input type="radio" value="5 stars" name="rating" id="rating5stars">
+            <label for="rating5stars">5 stars</label>
+            <input type="radio" value="4 stars" name="rating" id="rating4stars">
+            <label for="rating4stars">4 stars</label>
+            <input type="radio" value="3 stars" name="rating" id="rating3stars">
+            <label for="rating3stars">3 stars</label>
+            <input type="radio" value="2 stars" name="rating" id="rating2stars">
+            <label for="rating2stars">2 stars</label>
+            <input type="radio" value="1 stars" name="rating" id="rating1stars">
+            <label for="rating1stars">1 stars</label>
+          </div>
+          <button>Back</button>
+          <button type="submit">Submit</button>
+        </form>
     </section>
   
     <ul>
@@ -50,7 +61,6 @@
         <button class="btn remove">Remove</button>
       </li>
     </ul>
-    
   </main>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>

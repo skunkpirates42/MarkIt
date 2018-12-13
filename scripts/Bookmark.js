@@ -10,6 +10,7 @@ const Bookmark = (function () {
       title,
       rating,
       expanded: false, 
+      isEditing: false,
     };
   };
 

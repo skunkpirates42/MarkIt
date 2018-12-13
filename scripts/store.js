@@ -1,2 +1,11 @@
 'use strict';
-console.log('hello from store.js');
+const store = (function () {
+
+  return {
+    bookmarks: [],
+    minRating: null,
+    adding: false,
+    loading: false,
+    error: '',
+  }
+}());

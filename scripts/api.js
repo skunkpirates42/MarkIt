@@ -1,2 +1,10 @@
 'use strict';
-console.log('hello from api.js');
+const api = (function () {
+  const BASE_URL = 'https://thinkful-list-api.herokuapp.com';
+
+  
+  
+  return {
+
+  }
+}());

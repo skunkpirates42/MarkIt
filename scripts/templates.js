@@ -2,26 +2,12 @@
 /* global store */
 
 const templates = (function () {
-  function generateTemplate (bookmark) {
 
+  function generateControlsTemplate(store) {
     let template;
 
-    const condensedBookmark = `
-      <li class="boomark">
-        <h3>Sample bookmark title</h3>
-        <div class="rating">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-        </div>
-        <button class="btn remove">Remove</button>
-      </li>
-    `;
-
     const addingBookmark = `
-      <form id="add-bookmark-form">
+      <form id="js-add-bookmark-form">
         <h3>Create a Bookmark:</h3>
         <input type="text" placeholder="title">
         <input type="url" placeholder="url">
@@ -42,6 +28,53 @@ const templates = (function () {
         <button type="submit">Submit</button>
       </form>
     `;
+
+    const defaultControlsView = `
+      <button class="btn add-bookmark">Add Bookmark</button>
+      <select class="min-rating">
+        <option>Minimum Rating</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    `;
+
+    template = store.adding ? addingBookmark : defaultControlsView;
+
+    return template;
+  }
+
+
+  function generateBookmarkTemplate (bookmark) {
+
+    let template;
+    const editBtnStatus = bookmark.isEditing ? 'disabled' : '';
+
+    // const bookmarkRating = ` 
+    // <span class="fa fa-star checked"></span>
+    // <span class="fa fa-star checked"></span>
+    // <span class="fa fa-star checked"></span>
+    // <span class="fa fa-star"></span>
+    // <span class="fa fa-star"></span>`
+
+    const condensedBookmark = `
+      <li class="boomark" data-item-id="${bookmark.id}">
+        <h3>${bookmark.title}</h3>
+        <div class="rating">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          \${bookmarkRating}\
+        </div>
+        <button class="btn remove">Remove</button>
+        <button class="btn edit" ${editBtnStatus}>edit</button>
+      </li>
+    `;
+
 
     const expandedBookmark = `
       <li class="boomark expanded">
@@ -74,13 +107,17 @@ const templates = (function () {
         <button class="btn remove">Remove</button>
       </li>
     `;
-    template = condensedBookmark;
+    
+    if (bookmark.isEditing) {
+      template = 
+    }
 
     return template;
   }
 
 
   return {
-    generateTemplate
+    generateBookmarkTemplate,
+    generateControlsTemplate,
   };
 }());

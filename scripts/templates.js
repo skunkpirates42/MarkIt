@@ -52,6 +52,9 @@ const templates = (function () {
     let template;
     const editBtnStatus = bookmark.isEditing ? 'disabled' : '';
 
+
+    // !!!!!! How do I dynamically render the checked attr on each span based
+    // on the rating property on bookmark?? !!!!!!
     // const bookmarkRating = ` 
     // <span class="fa fa-star checked"></span>
     // <span class="fa fa-star checked"></span>
@@ -60,7 +63,7 @@ const templates = (function () {
     // <span class="fa fa-star"></span>`
 
     const condensedBookmark = `
-      <li class="boomark" data-item-id="${bookmark.id}">
+      <li class="js-boomark" data-item-id="${bookmark.id}">
         <h3>${bookmark.title}</h3>
         <div class="rating">
           <span class="fa fa-star checked"></span>
@@ -68,7 +71,6 @@ const templates = (function () {
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
           <span class="fa fa-star"></span>
-          \${bookmarkRating}\
         </div>
         <button class="btn remove">Remove</button>
         <button class="btn edit" ${editBtnStatus}>edit</button>
@@ -77,7 +79,7 @@ const templates = (function () {
 
 
     const expandedBookmark = `
-      <li class="boomark expanded">
+      <li class="js-boomark expanded">
         <h3>${bookmark.title}</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
         <button class="btn visit-site">Visit Site</button>
@@ -93,7 +95,7 @@ const templates = (function () {
     `;
 
     const editingBookmark = `
-      <li class="boomark expanded">
+      <li class="js-boomark expanded">
         <h3>Sample bookmark title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
         <button class="btn visit-site">Visit Site</button>

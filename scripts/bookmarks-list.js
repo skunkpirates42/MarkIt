@@ -22,6 +22,12 @@ const bookmarkList = (function () {
     $('.js-bookmark-list').html(bookmarkListItemsString);
   }
 
+  function getItemIdFromBookmark (bookmark) {
+    return $(bookmark)
+      .closest('js-bookmark')
+      .data('item-id');
+  }
+
   function handleAddBookmarkSubmit () {
     // this function will be responsible for listening for the submit even on the 
     // add bookmark form ('#js-add-bookmark-form')
@@ -32,10 +38,30 @@ const bookmarkList = (function () {
     // 
   }
 
+  function handleEditSubmit () {
+    // this function will handle the submit event on the edit form 
+    // i'll grab the data from the form upon submitting
+    // the func will then call to the api with the new data
+    // and re-render the page with the new edited data
+  }
+
+  function handleEditBookMark () {
+    // this function will be responsible for editing the bookmark while it's in the list
+    // first I'll listen for a click even on the edit button
+    // that will cause the isEditing property on the individual bookmark object that matches
+    // the one that was clicked
+    // will re-render the book mark view as to be able to edit it with a form
+    // handle the submit
+    // function handleEditSubmit()
+  }
+
   function bindEventListeners() {
-    // this function will take in any function that uses and event listener
+    // this function will invoke any function that uses and event listener
     // it will then be passes to the $.document.ready() in index.js so our
     // listeners can be bound at page load
+    handleAddBookmarkSubmit();
+    handleEditBookMark();
+    handleEditSubmit();
   }
   return {
     render,

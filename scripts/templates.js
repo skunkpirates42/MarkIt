@@ -3,7 +3,7 @@
 
 const templates = (function () {
 
-  function generateControlsTemplate(store) {
+  function generateControlsTemplate(obj) {
     let template;
 
     const addingBookmark = `
@@ -41,7 +41,7 @@ const templates = (function () {
       </select>
     `;
 
-    template = store.adding ? addingBookmark : defaultControlsView;
+    template = obj.adding ? addingBookmark : defaultControlsView;
 
     return template;
   }
@@ -107,10 +107,7 @@ const templates = (function () {
         <button class="btn remove">Remove</button>
       </li>
     `;
-    
-    if (bookmark.isEditing) {
-      template = 
-    }
+    template = condensedBookmark;
 
     return template;
   }

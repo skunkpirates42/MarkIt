@@ -3,6 +3,11 @@
 
 const bookmarkList = (function () {
 
+  function generateControlsString () {
+    const controls = templates.generateControlsTemplate(store);
+    return controls;
+  }
+
   function generateBookmarkString (bookmarkList) {
     const bookmarks = bookmarkList.map(bookmark => templates.generateBookmarkTemplate(bookmark));
     return bookmarks.join('');
@@ -11,8 +16,9 @@ const bookmarkList = (function () {
   function render () {
     let bookmarks = [...store.bookmarks];
     console.log('`render` ran');
+    const controlsString = generateControlsString();
     const bookmarkListItemsString = generateBookmarkString(bookmarks);
-    $('.js-controls-container')
+    $('.js-controls-container').html(controlsString);
     $('.js-bookmark-list').html(bookmarkListItemsString);
   }
 

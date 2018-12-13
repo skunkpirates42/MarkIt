@@ -6,6 +6,20 @@ const templates = (function () {
 
     let template;
 
+    const condensedBookmark = `
+      <li class="boomark">
+        <h3>Sample bookmark title</h3>
+        <div class="rating">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <button class="btn remove">Remove</button>
+      </li>
+    `;
+
     const addingBookmark = `
       <form id="add-bookmark-form">
         <h3>Create a Bookmark:</h3>
@@ -60,7 +74,7 @@ const templates = (function () {
         <button class="btn remove">Remove</button>
       </li>
     `;
-    template = expandedBookmark;
+    template = condensedBookmark;
 
     return template;
   }

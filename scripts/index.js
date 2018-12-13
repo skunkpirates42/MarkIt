@@ -1,5 +1,5 @@
 'use strict';
-/* global $, cuid */
+/* global $, bookmarkList */
 $(function () {
-  console.log('page loaded');
-})
+  bookmarkList.render();
+});

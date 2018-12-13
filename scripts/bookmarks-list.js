@@ -1,10 +1,18 @@
 'use strict';
-/* global templates */
+/* global $, templates,store */
 
 const bookmarkList = (function () {
 
+  function generateBookmarkString (bookmarkList) {
+    const bookmarks = bookmarkList.map(bookmark => templates.generateTemplate(bookmark));
+    return bookmarks.join('');
+  }
+
   function render () {
-    
+    let bookmarks = [...store.bookmarks];
+    console.log('`render` ran');
+    const bookmarkListItemsString = generateBookmarkString(bookmarks);
+    $('.js-bookmark-list').html(bookmarkListItemsString);
   }
 
   function bindEventListeners() {

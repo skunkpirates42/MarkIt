@@ -4,35 +4,35 @@
 const api = (function () {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/peter';
 
-  const getItems = function (callback) {
-    $.getJSON(`${BASE_URL}/items`, callback);
+  const getItems = function (onSuccess) {
+    $.getJSON(`${BASE_URL}/items`, onSuccess);
   };
 
-  const apiRequest = (method, data, success, error, id) => {
+  const apiRequest = (method, payLoad, success, error, id) => {
     $.ajax({
-      url: `${BASE_URL}/items/${id}`,
+      url: id ? `${BASE_URL}/items/${id}`: `${BASE_URL}/items`,
       method,
       contentType: 'application/json',
-      data,
+      payLoad,
       success,
       error
     });
   };
 
-  const createItem = function (obj, successCallback, errorCallback) {
-    const newItem = JSON.stringify(obj);
-    // apiRequest('POST', newItem, successCallback, errorCallback);
+  const createItem = function (bookmark, onSuccess, onError) {
+    const payLoad = JSON.stringify(bookmark);
+    apiRequest('POST', payLoad, onSuccess, onError);
     console.log('`createItem` invokation works');
   };
 
-  const updateItem = function (id, updateData, callback) {
-    const jsonUpdateData = JSON.stringify(updateData);
-    // apiRequest('PATCH', jsonUpdateData, callback, callback, id);
+  const updateItem = function (id, updateData, onSuccess, onError) {
+    const payLoad = JSON.stringify(updateData);
+    apiRequest('PATCH', payLoad, onSuccess, onError, id);
     console.log('`updateItem` invokation works');
   };
 
-  const deleteItem = function (id, callback) {
-    // apiRequest('DELETE', callback, id);
+  const deleteItem = function (id, onSucess, onError) {
+    apiRequest('DELETE', onSucess, onError, id);
     console.log('`deleteItem` invokation works');
   };
 

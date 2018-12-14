@@ -83,7 +83,7 @@ const templates = (function () {
       <li class="js-boomark expanded" data-item-id="${bookmark.id}">
         <h3>${bookmark.title}</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-        <button class="btn visit-site">Visit Site</button>
+        <button class="btn" onclick="location.href='${bookmark.url}'" type="button">Visit Site</button>
         <div class="rating">
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
@@ -100,7 +100,7 @@ const templates = (function () {
       <li class="js-boomark expanded" data-item-id="${bookmark.id}>
         <h3>Sample bookmark title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-        <button class="btn visit-site">Visit Site</button>
+        <button class="btn visit-site" onclick="window.location='${bookmark.url}'>Visit Site</button>
         <div class="rating">
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>

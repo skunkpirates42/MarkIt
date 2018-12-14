@@ -52,6 +52,17 @@ const bookmarkList = (function () {
       .data('item-id');
   }
 
+  // Sort by min stars functions
+  function filterByMinStars() {
+    $('.js-controls-container').on('change', '.min-rating', function (e) {
+      const minRating = $(e.target).val();
+      store.setMinRating(minRating);
+      store.filterByMinRating(minRating);
+      render();
+    });
+  }
+
+
   // Add bookmark form functionality
   function toggleAddAndRender() {
     store.toggleAdding();
@@ -95,6 +106,7 @@ const bookmarkList = (function () {
     });
   }
 
+  // Delete functionality
   function handleDeleteItem() {
     // this function will attach and event listener on the remove button
     // that is present on each bookmark
@@ -116,6 +128,7 @@ const bookmarkList = (function () {
     });
   }
 
+  // Expand and Collapse Bookmark functions
   function findToggleExpandAndRender(e) {
     const bookmark = $(e.currentTarget.parentElement);
     const id = getItemIdFromBookmark(bookmark);
@@ -135,6 +148,7 @@ const bookmarkList = (function () {
     });
   }
 
+  // Edit Bookmark functions
   function handleEditSubmit () {
     // this function will handle the submit event on the edit form 
     // i'll grab the data from the form upon submitting
@@ -157,6 +171,7 @@ const bookmarkList = (function () {
     // it will then be passed to the $.document.ready() in index.js so the
     // listeners can be bound at page load
     handleAddBookmarkSubmit();
+    filterByMinStars();
     handleEditBookMark();
     handleEditSubmit();
     handleBackOnAddForm();

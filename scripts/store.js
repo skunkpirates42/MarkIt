@@ -29,6 +29,10 @@ const store = (function () {
     this.minRating = num;
   };
 
+  const filterByMinRating = function (rating) {
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.rating >= rating);
+  };
+
   const toggleAdding = function () {
     this.adding = !this.adding;
   };
@@ -55,6 +59,7 @@ const store = (function () {
     findAndDelete,
     setMinRating,
     toggleAdding,
+    filterByMinRating,
     toggleLoading,
     setError,
   };

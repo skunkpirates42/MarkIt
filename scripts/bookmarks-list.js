@@ -113,8 +113,11 @@ const bookmarkList = (function () {
     // this function will listen for a click event on the expand button
     // it will toggle bookmark.expand and re render with the proper template
     // based on that
-    $('.js-bookmark-list').on('click', '.expand', function () {
-      console.log('exapand button clicked');
+    $('.js-bookmark-list').on('click', '.expand', function (e) {
+      const bookmark = $(e.currentTarget.parentElement);
+      const id = getItemIdFromBookmark(bookmark);
+      store.toggleExpanded(id);
+      render();
     });
   }
 
@@ -122,8 +125,11 @@ const bookmarkList = (function () {
     // this func will listen for click event on the collapse button
     // it will toggle the bookmark.expand property and re render
     // with the proper stuff based on that
-    $('.js-bookmark-list').on('click', '.collapse', function () {
-      console.log('exapand button clicked');
+    $('.js-bookmark-list').on('click', '.collapse', function (e) {
+      const bookmark = $(e.currentTarget.parentElement);
+      const id = getItemIdFromBookmark(bookmark);
+      store.toggleExpanded(id);
+      render();
     });
   }
 

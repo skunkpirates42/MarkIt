@@ -4,7 +4,7 @@
 const bookmarkList = (function () {
 
   // generate diaplay for error handling
-  function genereateError (err) {
+  function generateError (err) {
     let message = '';
     if (err.responseJSON && err.responseJSON.message) {
       message = err.responseJSON.message;
@@ -32,6 +32,13 @@ const bookmarkList = (function () {
   }
 
   function render () {
+    if (store.error) {
+      const el = generateError(store.error);
+      $('.error-container').html(el);
+    } else {
+      $('.error-container').empty();
+    }
+    
     let bookmarks = [...store.bookmarks];
     console.log('`render` ran');
     const controlsString = generateControlsString();
@@ -110,9 +117,6 @@ const bookmarkList = (function () {
   }
 
   function handleExpandBookmark() {
-    // this function will listen for a click event on the expand button
-    // it will toggle bookmark.expand and re render with the proper template
-    // based on that
     $('.js-bookmark-list').on('click', '.expand', function (e) {
       const bookmark = $(e.currentTarget.parentElement);
       const id = getItemIdFromBookmark(bookmark);
@@ -122,9 +126,6 @@ const bookmarkList = (function () {
   }
 
   function handleCollapseBookmark() {
-    // this func will listen for click event on the collapse button
-    // it will toggle the bookmark.expand property and re render
-    // with the proper stuff based on that
     $('.js-bookmark-list').on('click', '.collapse', function (e) {
       const bookmark = $(e.currentTarget.parentElement);
       const id = getItemIdFromBookmark(bookmark);
@@ -166,6 +167,5 @@ const bookmarkList = (function () {
   return {
     render,
     bindEventListeners,
-    genereateError,
   };
 }());

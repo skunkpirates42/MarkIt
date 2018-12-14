@@ -8,9 +8,9 @@ const api = (function () {
     $.getJSON(`${BASE_URL}/items`, callback);
   };
 
-  const apiRequest = (method, data, success, error) => {
+  const apiRequest = (method, data, success, error, id) => {
     $.ajax({
-      url: `${BASE_URL}/items/`,
+      url: `${BASE_URL}/items/${id}`,
       method,
       contentType: 'application/json',
       data,
@@ -19,14 +19,24 @@ const api = (function () {
     });
   };
 
-  const createItem = function (name, successCallback, errorCallback) {
-    const data = 
-    apiRequest('POST', data, successCallback, errorCallback);
+  const createItem = function (obj, successCallback, errorCallback) {
+    const newItem = JSON.stringify(obj);
+    // apiRequest('POST', newItem, successCallback, errorCallback);
+    console.log('`createItem` invokation works');
   };
+
+  const updateItem = function (id, updateData, callback) {
+    const jsonUpdateData = JSON.stringify(updateData);
+    // apiRequest('PATCH', jsonUpdateData, callback, callback, id);
+    console.log('`updateItem` invokation works');
+  };
+
+  
   
   return {
     getItems,
     createItem,
+    updateItem,
 
   };
 }());

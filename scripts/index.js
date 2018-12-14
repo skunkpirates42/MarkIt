@@ -23,4 +23,5 @@ $.fn.extend({
 $(function () {
   bookmarkList.bindEventListeners();
   bookmarkList.render();
+  api.updateItem();
 });

@@ -9,7 +9,7 @@ const templates = (function () {
         <h3>Create a Bookmark:</h3>
         <input type="text" placeholder="title" name="title">
         <input type="url" placeholder="url" name="url">
-        <textarea rows="4" col="50" name="desc"></textarea>
+        <textarea rows="4" col="50" name="desc" placeholder="enter your description here..."></textarea>
         <div class="radio-container">
           <input type="radio" value=5 name="rating" id="rating5stars">
           <label for="rating5stars">5 stars</label>
@@ -22,8 +22,8 @@ const templates = (function () {
           <input type="radio" value=1 name="rating" id="rating1stars">
           <label for="rating1stars">1 stars</label>
         </div>
-        <button class="back-to-default">Back</button>
-        <button type="submit">Submit</button>
+        <button class="btn back-to-default">Back</button>
+        <button class="btn"type="submit">Submit</button>
       </form>
     `;
 
@@ -51,7 +51,6 @@ const templates = (function () {
   function generateBookmarkTemplate (bookmark) {
 
     let template;
-    const editBtnStatus = bookmark.isEditing ? 'disabled' : '';
 
     // attempt at dynamically putting the checked class on those star spans
     // function generateRating (bookmark) {
@@ -82,7 +81,6 @@ const templates = (function () {
         </div>
         <button class="btn expand">Expand</button>
         <button class="btn remove">Remove</button>
-        <button class="btn edit" ${editBtnStatus}>edit</button>
       </li>
     `;
 

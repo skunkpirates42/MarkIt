@@ -154,7 +154,8 @@ const bookmarkList = (function () {
 
   function clearError() {
     $('.error-container').on('click', '#cancel-error', function () {
-      
+      store.setError(null);
+      render();
     });
   }
 

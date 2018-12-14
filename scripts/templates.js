@@ -72,6 +72,7 @@ const templates = (function () {
           <span class="fa fa-star"></span>
           <span class="fa fa-star"></span>
         </div>
+        <button class="btn expand">Expand</button>
         <button class="btn remove">Remove</button>
         <button class="btn edit" ${editBtnStatus}>edit</button>
       </li>

@@ -1,3 +1,13 @@
 .checked {
   color: orange;
 }
+
+.js-bookmark-list {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.btn {
+  border-radius: 5px;
+}
+

@@ -1,5 +1,5 @@
 'use strict';
-/* global $, templates, store, Bookmark */
+/* global $, templates, store, api */
 
 const bookmarkList = (function () {
 
@@ -64,31 +64,30 @@ const bookmarkList = (function () {
     });
   }
 
-  function addBoomarkToStore (e) {
-    const storeData = $(e.target).getStoreData();
-    console.log(storeData);
-    const { title, rating, url } = storeData;
-    const bookmark = Bookmark.create(title, Number(rating), url);
-    store.addBookmark(bookmark);
-    toggleAddAndRender();
-  }
-
   function handleAddBookmarkSubmit () {
     // this function will be responsible for listening for the submit even on the 
     // add bookmark form ('#js-add-bookmark-form')
     handleAddBookmarkForm();
     $('.js-controls-container').on('submit', '#js-add-bookmark-form', function (e) {
-    // prevent default form behavior
       e.preventDefault();
       // grab data from form (will use another function for this)
       const formData = $(e.target).serializeJSON();
-      //add to store
-      addBoomarkToStore(e);
+      console.log(typeof formData, formData);
+      // submit post request to API with data from the form
+      api.createBookmark(formData, 
+        (response) => {
+          store.addBookmark(response);
+          toggleAddAndRender();
+        },  
+        (err) => {
+          console.log(err);
+          store.setError(err);
+          toggleAddAndRender();
+        } 
+      );
       // clear all form fields (prob break into another function
       $(e.target).children().val('');
-      console.log(formData);
     });
-    // submit post request to API with data from the form
   }
 
   function handleEditSubmit () {

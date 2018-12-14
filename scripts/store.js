@@ -37,7 +37,9 @@ const store = (function () {
     this.loading = !this.loading;
   };
 
-
+  const setError = function (error) {
+    this.error = error;
+  };
 
   return {
     bookmarks: [],
@@ -54,5 +56,6 @@ const store = (function () {
     setMinRating,
     toggleAdding,
     toggleLoading,
+    setError,
   };
 }());

@@ -13,14 +13,14 @@ const api = (function () {
       url: id ? `${BASE_URL}/${id}`: BASE_URL,
       method,
       contentType: 'application/json',
-      payLoad,
+      data: payLoad,
       success,
       error
     });
   };
 
   const createBookmark = function (bookmark, onSuccess, onError) {
-    const payLoad = JSON.stringify(bookmark);
+    const payLoad = bookmark;
     apiRequest('POST', payLoad, onSuccess, onError);
     console.log('`createItem` invokation works');
   };

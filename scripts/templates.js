@@ -9,7 +9,7 @@ const templates = (function () {
         <h3>Create a Bookmark:</h3>
         <input type="text" placeholder="title" name="title">
         <input type="url" placeholder="url" name="url">
-        <textarea rows="4" col="50" name="description"></textarea>
+        <textarea rows="4" col="50" name="desc"></textarea>
         <div class="radio-container">
           <input type="radio" value=5 name="rating" id="rating5stars">
           <label for="rating5stars">5 stars</label>
@@ -59,6 +59,8 @@ const templates = (function () {
     // <span class="fa fa-star checked"></span>
     // <span class="fa fa-star"></span>
     // <span class="fa fa-star"></span>`
+
+    // const rating = ;
 
     const condensedBookmark = `
       <li class="js-boomark" data-item-id="${bookmark.id}">

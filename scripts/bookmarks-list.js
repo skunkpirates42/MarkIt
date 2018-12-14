@@ -28,17 +28,20 @@ const bookmarkList = (function () {
       .data('item-id');
   }
 
+  function toggleAddAndRender() {
+    store.toggleAdding();
+    render();
+  }
+
   function handleBackOnAddForm () {
     $('.js-controls-container').on('click', '.back-to-default', function () {
-      console.log('back button clicked');
+      toggleAddAndRender();
     });
   }
 
   function handleAddBookmarkForm() {
     $('.js-controls-container').on('click', '.add-bookmark',function () {
-      console.log('add bookmark button clicked');
-      store.toggleAdding();
-      render();
+      toggleAddAndRender();
     });
   }
   function handleAddBookmarkSubmit () {

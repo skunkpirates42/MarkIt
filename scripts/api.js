@@ -31,12 +31,17 @@ const api = (function () {
     console.log('`updateItem` invokation works');
   };
 
-  
+  const deleteItem = function (id, callback) {
+    // apiRequest('DELETE', callback, id);
+    console.log('`deleteItem` invokation works');
+  };
+
+
   
   return {
     getItems,
     createItem,
     updateItem,
-
+    deleteItem,
   };
 }());

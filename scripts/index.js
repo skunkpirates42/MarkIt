@@ -10,6 +10,8 @@ $.fn.extend({
     });
     return JSON.stringify(obj);
   },
+
+  // might not need this...
   getStoreData: function() {
     const formData = new FormData(this[0]);
     const obj = {};
@@ -23,5 +25,4 @@ $.fn.extend({
 $(function () {
   bookmarkList.bindEventListeners();
   bookmarkList.render();
-  api.updateItem();
 });

@@ -24,13 +24,30 @@ const bookmarkList = (function () {
 
   function getItemIdFromBookmark (bookmark) {
     return $(bookmark)
-      .closest('js-bookmark')
+      .closest('.js-bookmark')
       .data('item-id');
   }
 
+  function handleBackOnAddForm () {
+    $('.js-controls-container').on('click', '.back-to-default', function () {
+      console.log('back button clicked');
+    });
+  }
+
+  function handleAddBookmarkForm() {
+    $('.js-controls-container').on('click', '.add-bookmark',function () {
+      console.log('add bookmark button clicked');
+      store.toggleAdding();
+      render();
+    });
+  }
   function handleAddBookmarkSubmit () {
     // this function will be responsible for listening for the submit even on the 
     // add bookmark form ('#js-add-bookmark-form')
+    handleAddBookmarkForm();
+    $('.js-controls-container').on('submit', '#js-add-bookmark-form', function (e) {
+      e.preventDefault();
+    });
     // prevent default form behavior
     // grab data from form (will use another function for this)
     // clear all form fields (prob break into another function)
@@ -62,6 +79,7 @@ const bookmarkList = (function () {
     handleAddBookmarkSubmit();
     handleEditBookMark();
     handleEditSubmit();
+    handleBackOnAddForm();
   }
   return {
     render,

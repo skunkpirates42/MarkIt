@@ -24,7 +24,7 @@ const templates = (function () {
           <input type="radio" value="1 stars" name="rating" id="rating1stars">
           <label for="rating1stars">1 stars</label>
         </div>
-        <button>Back</button>
+        <button class="back-to-default">Back</button>
         <button type="submit">Submit</button>
       </form>
     `;

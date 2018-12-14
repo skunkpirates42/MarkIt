@@ -7,9 +7,12 @@ main {
   color: orange;
 }
 
-.js-bookmark-list {
+.js-bookmark {
   border: 1px solid black;
   border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  list-style: none;
 }
 
 .btn {

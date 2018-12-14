@@ -62,6 +62,14 @@ const bookmarkList = (function () {
     });
   }
 
+  function clearMinRating() {
+    $('.js-controls-container').on('click', '.clear-min-rating', function () {
+      store.setMinRating(null);
+      api.getBookmarks(function () {
+        render();
+      });
+    });
+  }
 
   // Add bookmark form functionality
   function toggleAddAndRender() {
@@ -178,6 +186,7 @@ const bookmarkList = (function () {
     handleDeleteItem();
     handleExpandBookmark();
     handleCollapseBookmark();
+    clearMinRating()
 
   }
   return {

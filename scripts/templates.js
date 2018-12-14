@@ -27,6 +27,8 @@ const templates = (function () {
       </form>
     `;
 
+    const clearMinRating = '<button class="btn clear-min-rating">Clear Min Rating</button>';
+    const minRatingString = `Min Rating: ${store.minRating} ${clearMinRating}`;
     const defaultControlsView = `
       <button class="btn add-bookmark">Add Bookmark</button>
       <select class="min-rating">
@@ -37,6 +39,7 @@ const templates = (function () {
         <option>4</option>
         <option>5</option>
       </select>
+      ${store.minRating ? minRatingString: ''}
     `;
 
     const template = obj.adding ? addingBookmark : defaultControlsView;
@@ -60,17 +63,32 @@ const templates = (function () {
     // <span class="fa fa-star"></span>
     // <span class="fa fa-star"></span>`
 
-    // const rating = ;
+    // attempt at dynamically putting the checked class on those star spans
+    // function generateRating (bookmark) {
+    //   const rating = bookmark.rating;
+    //   const checked = '<span class="fa fa-star checked"></span>';
+    //   const unchecked = '<span class="fa fa-star"></span>';
+    //   const ratings = [];       			
+    //   for (let i = 1; i <= 5; i++) {
+    //     if (rating < i) {
+    //       ratings.push(checked);
+    //     } else ratings.push(unchecked);
+    //   }
+
+    //   ratings.forEach(rating => {
+    //     $('.rating').html(ratings);
+    //   });
+    // }
 
     const condensedBookmark = `
-      <li class="js-boomark" data-item-id="${bookmark.id}">
+      <li class="js-bookmark" data-item-id="${bookmark.id}">
         <h3>${bookmark.title}</h3>
         <div class="rating">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
+          <span class="fa fa-star ${bookmark.rating >= 1 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 2 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 3 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 4 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 5 ? 'checked' : ''}"></span>
         </div>
         <button class="btn expand">Expand</button>
         <button class="btn remove">Remove</button>
@@ -80,16 +98,16 @@ const templates = (function () {
 
 
     const expandedBookmark = `
-      <li class="js-boomark expanded" data-item-id="${bookmark.id}">
+      <li class="js-bookmark expanded" data-item-id="${bookmark.id}">
         <h3>${bookmark.title}</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
         <button class="btn" onclick="location.href='${bookmark.url}'" type="button">Visit Site</button>
         <div class="rating">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
+          <span class="fa fa-star ${bookmark.rating >= 1 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 2 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 3 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 4 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 5 ? 'checked' : ''}"></span>
         </div>
         <button class="btn collapse">Collapse</button>
         <button class="btn remove">Remove</button>
@@ -102,11 +120,11 @@ const templates = (function () {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
         <button class="btn visit-site" onclick="window.location='${bookmark.url}'>Visit Site</button>
         <div class="rating">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
+          <span class="fa fa-star ${bookmark.rating >= 1 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 2 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 3 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 4 ? 'checked' : ''}"></span>
+          <span class="fa fa-star ${bookmark.rating >= 5 ? 'checked' : ''}"></span>
         </div>
         <button class="btn remove">Remove</button>
       </li>

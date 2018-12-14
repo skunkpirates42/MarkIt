@@ -3,6 +3,23 @@
 
 const bookmarkList = (function () {
 
+  // generate diaplay for error handling
+  function genereateError (err) {
+    let message = '';
+    if (err.responseJSON && err.responseJSON.message) {
+      message = err.responseJSON.message;
+    } else {
+      message = `${err.code} Server Error`;
+    }
+
+    return `
+      <section class="error-content">
+        <button id="cancel-error">X</button>
+        <p>${message}</p>
+      </section>
+    `;
+  }
+
   // functions that have to do with rendering
   function generateControlsString () {
     const controls = templates.generateControlsTemplate(store);
@@ -103,5 +120,6 @@ const bookmarkList = (function () {
   return {
     render,
     bindEventListeners,
+    genereateError,
   };
 }());

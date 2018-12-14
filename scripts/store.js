@@ -46,6 +46,7 @@ const store = (function () {
     bookmarks: [bookmark1],
     minRating: null,
     adding: false,
+    error: null,
     loading: false,
 
     addBookmark,

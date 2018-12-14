@@ -29,8 +29,8 @@ const store = (function () {
     this.minRating = num;
   };
 
-  const filterByMinRating = function (rating) {
-    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.rating >= rating);
+  const filterByMinRating = function () {
+    return this.bookmarks.filter(bookmark => bookmark.rating >= this.minRating);
   };
 
   const toggleAdding = function () {

@@ -53,16 +53,6 @@ const templates = (function () {
     let template;
     const editBtnStatus = bookmark.isEditing ? 'disabled' : '';
 
-
-    // !!!!!! How do I dynamically render the checked attr on each span based
-    // on the rating property on bookmark?? !!!!!!
-    // const bookmarkRating = ` 
-    // <span class="fa fa-star checked"></span>
-    // <span class="fa fa-star checked"></span>
-    // <span class="fa fa-star checked"></span>
-    // <span class="fa fa-star"></span>
-    // <span class="fa fa-star"></span>`
-
     // attempt at dynamically putting the checked class on those star spans
     // function generateRating (bookmark) {
     //   const rating = bookmark.rating;
@@ -110,22 +100,6 @@ const templates = (function () {
           <span class="fa fa-star ${bookmark.rating >= 5 ? 'checked' : ''}"></span>
         </div>
         <button class="btn collapse">Collapse</button>
-        <button class="btn remove">Remove</button>
-      </li>
-    `;
-
-    const editingBookmark = `
-      <li class="js-boomark expanded" data-item-id="${bookmark.id}>
-        <h3>Sample bookmark title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-        <button class="btn visit-site" onclick="window.location='${bookmark.url}'>Visit Site</button>
-        <div class="rating">
-          <span class="fa fa-star ${bookmark.rating >= 1 ? 'checked' : ''}"></span>
-          <span class="fa fa-star ${bookmark.rating >= 2 ? 'checked' : ''}"></span>
-          <span class="fa fa-star ${bookmark.rating >= 3 ? 'checked' : ''}"></span>
-          <span class="fa fa-star ${bookmark.rating >= 4 ? 'checked' : ''}"></span>
-          <span class="fa fa-star ${bookmark.rating >= 5 ? 'checked' : ''}"></span>
-        </div>
         <button class="btn remove">Remove</button>
       </li>
     `;

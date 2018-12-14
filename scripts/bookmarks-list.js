@@ -40,7 +40,9 @@ const bookmarkList = (function () {
     }
     
     let bookmarks = [...store.bookmarks];
-    console.log('`render` ran');
+    if (store.minRating) {
+      bookmarks = store.filterByMinRating();
+    }
     const controlsString = generateControlsString();
     const bookmarkListItemsString = generateBookmarkString(bookmarks);
     $('.js-controls-container').html(controlsString);
@@ -57,7 +59,6 @@ const bookmarkList = (function () {
     $('.js-controls-container').on('change', '.min-rating', function (e) {
       const minRating = $(e.target).val();
       store.setMinRating(minRating);
-      store.filterByMinRating(minRating);
       render();
     });
   }
@@ -65,9 +66,7 @@ const bookmarkList = (function () {
   function clearMinRating() {
     $('.js-controls-container').on('click', '.clear-min-rating', function () {
       store.setMinRating(null);
-      api.getBookmarks(function () {
-        render();
-      });
+      render();
     });
   }
 
@@ -104,7 +103,6 @@ const bookmarkList = (function () {
           toggleAddAndRender();
         },  
         (err) => {
-          console.log(err);
           store.setError(err);
           toggleAddAndRender();
         } 
@@ -121,14 +119,12 @@ const bookmarkList = (function () {
     $('.js-bookmark-list').on('click', '.remove', function (e) {
       const bookmark = $(e.currentTarget.parentElement);
       const id = getItemIdFromBookmark(bookmark);
-      console.log(id);
       api.deleteBookmark(id,
         () => {
           store.findAndDelete(id);
           render();
         },
         (err) => {
-          console.log(err);
           store.setError(err);
           render();
         }
@@ -156,6 +152,12 @@ const bookmarkList = (function () {
     });
   }
 
+  function clearError() {
+    $('.error-container').on('click', '#cancel-error', function () {
+      
+    });
+  }
+
   // Edit Bookmark functions
   function handleEditSubmit () {
     // this function will handle the submit event on the edit form 
@@ -180,14 +182,12 @@ const bookmarkList = (function () {
     // listeners can be bound at page load
     handleAddBookmarkSubmit();
     filterByMinStars();
-    handleEditBookMark();
-    handleEditSubmit();
     handleBackOnAddForm();
     handleDeleteItem();
     handleExpandBookmark();
     handleCollapseBookmark();
-    clearMinRating()
-
+    clearMinRating();
+    clearError();
   }
   return {
     render,

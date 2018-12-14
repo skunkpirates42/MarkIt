@@ -3,6 +3,7 @@
 
 const bookmarkList = (function () {
 
+  // functions that have to do with rendering
   function generateControlsString () {
     const controls = templates.generateControlsTemplate(store);
     return controls;
@@ -28,6 +29,7 @@ const bookmarkList = (function () {
       .data('item-id');
   }
 
+  // Add bookmark form functionality
   function toggleAddAndRender() {
     store.toggleAdding();
     render();
@@ -40,20 +42,26 @@ const bookmarkList = (function () {
   }
 
   function handleAddBookmarkForm() {
-    $('.js-controls-container').on('click', '.add-bookmark',function () {
+    $('.js-controls-container').on('click', '.add-bookmark', function () {
       toggleAddAndRender();
     });
   }
+
   function handleAddBookmarkSubmit () {
     // this function will be responsible for listening for the submit even on the 
     // add bookmark form ('#js-add-bookmark-form')
     handleAddBookmarkForm();
     $('.js-controls-container').on('submit', '#js-add-bookmark-form', function (e) {
-      e.preventDefault();
-    });
     // prevent default form behavior
-    // grab data from form (will use another function for this)
-    // clear all form fields (prob break into another function)
+      e.preventDefault();
+      // grab data from form (will use another function for this)
+      const formData = $(e.target).serializeJSON();
+      // clear all form fields (prob break into another function
+      $(e.target).children().val('');
+      toggleAddAndRender();
+      console.log(formData);
+    });
+    
     // submit post request to API with data from the form
     // 
   }
@@ -76,8 +84,8 @@ const bookmarkList = (function () {
   }
 
   function bindEventListeners() {
-    // this function will invoke any function that uses and event listener
-    // it will then be passes to the $.document.ready() in index.js so our
+    // this function will invoke any function that uses an event listener
+    // it will then be passed to the $.document.ready() in index.js so the
     // listeners can be bound at page load
     handleAddBookmarkSubmit();
     handleEditBookMark();

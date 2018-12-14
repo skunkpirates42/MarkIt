@@ -4,24 +4,22 @@
 const templates = (function () {
 
   function generateControlsTemplate(obj) {
-    let template;
-
     const addingBookmark = `
       <form id="js-add-bookmark-form">
         <h3>Create a Bookmark:</h3>
-        <input type="text" placeholder="title">
-        <input type="url" placeholder="url">
-        <textarea rows="4" col="50"></textarea>
+        <input type="text" placeholder="title" name="title">
+        <input type="url" placeholder="url" name="url">
+        <textarea rows="4" col="50" name="description"></textarea>
         <div class="radio-container">
-          <input type="radio" value="5 stars" name="rating" id="rating5stars">
+          <input type="radio" value=5 name="rating" id="rating5stars">
           <label for="rating5stars">5 stars</label>
-          <input type="radio" value="4 stars" name="rating" id="rating4stars">
+          <input type="radio" value=4 name="rating" id="rating4stars">
           <label for="rating4stars">4 stars</label>
-          <input type="radio" value="3 stars" name="rating" id="rating3stars">
+          <input type="radio" value=3 name="rating" id="rating3stars">
           <label for="rating3stars">3 stars</label>
-          <input type="radio" value="2 stars" name="rating" id="rating2stars">
+          <input type="radio" value=2 name="rating" id="rating2stars">
           <label for="rating2stars">2 stars</label>
-          <input type="radio" value="1 stars" name="rating" id="rating1stars">
+          <input type="radio" value=1 name="rating" id="rating1stars">
           <label for="rating1stars">1 stars</label>
         </div>
         <button class="back-to-default">Back</button>
@@ -41,7 +39,7 @@ const templates = (function () {
       </select>
     `;
 
-    template = obj.adding ? addingBookmark : defaultControlsView;
+    const template = obj.adding ? addingBookmark : defaultControlsView;
 
     return template;
   }

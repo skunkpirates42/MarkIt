@@ -116,21 +116,22 @@ const bookmarkList = (function () {
     });
   }
 
+  function findToggleExpandAndRender(e) {
+    const bookmark = $(e.currentTarget.parentElement);
+    const id = getItemIdFromBookmark(bookmark);
+    store.toggleExpanded(id);
+    render();
+  }
+
   function handleExpandBookmark() {
     $('.js-bookmark-list').on('click', '.expand', function (e) {
-      const bookmark = $(e.currentTarget.parentElement);
-      const id = getItemIdFromBookmark(bookmark);
-      store.toggleExpanded(id);
-      render();
+      findToggleExpandAndRender(e);
     });
   }
 
   function handleCollapseBookmark() {
     $('.js-bookmark-list').on('click', '.collapse', function (e) {
-      const bookmark = $(e.currentTarget.parentElement);
-      const id = getItemIdFromBookmark(bookmark);
-      store.toggleExpanded(id);
-      render();
+      findToggleExpandAndRender(e);
     });
   }
 

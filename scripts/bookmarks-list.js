@@ -1,5 +1,5 @@
 'use strict';
-/* global $, templates,store */
+/* global $, templates, store, Bookmark */
 
 const bookmarkList = (function () {
 
@@ -47,6 +47,17 @@ const bookmarkList = (function () {
     });
   }
 
+  // bug in regards to grabbing the correct data out of the form -- getting empty strs
+  function addBoomarkToStore (e) {
+    const storeData = $(e.target).getStoreData();
+    // this console.log is giving me empty strings for the values of the object
+    // prob need to find a better way to get the data to the store
+    console.log(storeData);
+    const { title, rating, url } = storeData;
+    const bookmark = Bookmark.create(title, Number(rating), url);
+    store.addBookmark(bookmark);
+    toggleAddAndRender();
+  }
   function handleAddBookmarkSubmit () {
     // this function will be responsible for listening for the submit even on the 
     // add bookmark form ('#js-add-bookmark-form')
@@ -58,12 +69,11 @@ const bookmarkList = (function () {
       const formData = $(e.target).serializeJSON();
       // clear all form fields (prob break into another function
       $(e.target).children().val('');
-      toggleAddAndRender();
-      console.log(formData);
+      // add item to store
+      addBoomarkToStore(e);
+      // console.log(formData);
     });
-    
     // submit post request to API with data from the form
-    // 
   }
 
   function handleEditSubmit () {

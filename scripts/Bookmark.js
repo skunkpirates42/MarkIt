@@ -3,12 +3,13 @@
 
 const Bookmark = (function () {
 
-  const create = function (title, rating) {
+  const create = function (title, rating, url) {
     
     return {
       id: cuid(),
       title,
       rating,
+      url,
       expanded: false, 
       isEditing: false,
     };

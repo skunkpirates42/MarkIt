@@ -3,7 +3,7 @@
 const store = (function () {
 
   // mock data to see if render works *** REMOVE WHEN DONE -- in the returned obj at boottom too
-  const bookmark1 = Bookmark.create('coding', 4);
+  const bookmark1 = Bookmark.create('coding', 4, 'http://www.madeitup.com');
 
   const addBookmark = function (bookmark) {
     this.bookmarks.push(bookmark);

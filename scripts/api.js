@@ -2,11 +2,15 @@
 /* global $*/
 
 const api = (function () {
-  const BASE_URL = 'https://thinkful-list-api.herokuapp.com';
+  const BASE_URL = 'https://thinkful-list-api.herokuapp.com/peter';
 
-  const apiRequest = (id, method, data, success, error) => {
+  const getItems = function (callback) {
+    $.getJSON(`${BASE_URL}/items`, callback);
+  };
+
+  const apiRequest = (method, data, success, error) => {
     $.ajax({
-      url: `${BASE_URL}/items/${id}`,
+      url: `${BASE_URL}/items/`,
       method,
       contentType: 'application/json',
       data,
@@ -14,8 +18,15 @@ const api = (function () {
       error
     });
   };
+
+  const createItem = function (name, successCallback, errorCallback) {
+    const data = 
+    apiRequest('POST', data, successCallback, errorCallback);
+  };
   
   return {
-    apiRequest,
-  }
+    getItems,
+    createItem,
+
+  };
 }());

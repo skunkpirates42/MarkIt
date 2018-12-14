@@ -109,6 +109,24 @@ const bookmarkList = (function () {
     });
   }
 
+  function handleExpandBookmark() {
+    // this function will listen for a click event on the expand button
+    // it will toggle bookmark.expand and re render with the proper template
+    // based on that
+    $('.js-bookmark-list').on('click', '.expand', function () {
+      console.log('exapand button clicked');
+    });
+  }
+
+  function handleCollapseBookmark() {
+    // this func will listen for click event on the collapse button
+    // it will toggle the bookmark.expand property and re render
+    // with the proper stuff based on that
+    $('.js-bookmark-list').on('click', '.collapse', function () {
+      console.log('exapand button clicked');
+    });
+  }
+
   function handleEditSubmit () {
     // this function will handle the submit event on the edit form 
     // i'll grab the data from the form upon submitting
@@ -135,6 +153,9 @@ const bookmarkList = (function () {
     handleEditSubmit();
     handleBackOnAddForm();
     handleDeleteItem();
+    handleExpandBookmark();
+    handleCollapseBookmark();
+
   }
   return {
     render,

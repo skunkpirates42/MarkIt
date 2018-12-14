@@ -91,6 +91,7 @@ const templates = (function () {
           <span class="fa fa-star"></span>
           <span class="fa fa-star"></span>
         </div>
+        <button class="btn collapse">Collapse</button>
         <button class="btn remove">Remove</button>
       </li>
     `;
@@ -110,7 +111,12 @@ const templates = (function () {
         <button class="btn remove">Remove</button>
       </li>
     `;
-    template = condensedBookmark;
+    
+    if (bookmark.expanded) {
+      template = expandedBookmark;
+    } else {
+      template = condensedBookmark;
+    }
 
     return template;
   }

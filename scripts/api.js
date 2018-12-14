@@ -25,8 +25,8 @@ const api = (function () {
     console.log('`createItem` invokation works');
   };
 
-  const updateBookmark = function (id, updateData, onSuccess, onError) {
-    const payLoad = JSON.stringify(updateData);
+  const updateBookmark = function (id, bookmark, onSuccess, onError) {
+    const payLoad = JSON.stringify(bookmark);
     apiRequest('PATCH', payLoad, onSuccess, onError, id);
     console.log('`updateItem` invokation works');
   };

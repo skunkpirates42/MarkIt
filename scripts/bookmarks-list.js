@@ -42,7 +42,6 @@ const bookmarkList = (function () {
 
   function getItemIdFromBookmark (bookmark) {
     return $(bookmark)
-      .closest('.js-bookmark')
       .data('item-id');
   }
 
@@ -72,7 +71,6 @@ const bookmarkList = (function () {
       e.preventDefault();
       // grab data from form (will use another function for this)
       const formData = $(e.target).serializeJSON();
-      console.log(typeof formData, formData);
       // submit post request to API with data from the form
       api.createBookmark(formData, 
         (response) => {
@@ -85,8 +83,29 @@ const bookmarkList = (function () {
           toggleAddAndRender();
         } 
       );
-      // clear all form fields (prob break into another function
+      // clear all form fields
       $(e.target).children().val('');
+    });
+  }
+
+  function handleDeleteItem() {
+    // this function will attach and event listener on the remove button
+    // that is present on each bookmark
+    $('.js-bookmark-list').on('click', '.remove', function (e) {
+      const bookmark = $(e.currentTarget.parentElement);
+      const id = getItemIdFromBookmark(bookmark);
+      console.log(id);
+      api.deleteBookmark(id,
+        () => {
+          store.findAndDelete(id);
+          render();
+        },
+        (err) => {
+          console.log(err);
+          store.setError(err);
+          render();
+        }
+      );
     });
   }
 
@@ -115,6 +134,7 @@ const bookmarkList = (function () {
     handleEditBookMark();
     handleEditSubmit();
     handleBackOnAddForm();
+    handleDeleteItem();
   }
   return {
     render,

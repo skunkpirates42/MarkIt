@@ -88,7 +88,7 @@ const templates = (function () {
     const expandedBookmark = `
       <li class="js-bookmark expanded" data-item-id="${bookmark.id}">
         <h3>${bookmark.title}</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+        <p>${bookmark.desc}</p>
         <button class="btn" onclick="location.href='${bookmark.url}'" type="button">Visit Site</button>
         <div class="rating">
           <span class="fa fa-star ${bookmark.rating >= 1 ? 'checked' : ''}"></span>

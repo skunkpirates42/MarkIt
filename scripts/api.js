@@ -9,6 +9,7 @@ const api = (function () {
   };
 
   const apiRequest = (method, payLoad, success, error, id) => {
+    console.log('making a request...', {method, payLoad, success, error, id});
     $.ajax({
       url: id ? `${BASE_URL}/${id}`: BASE_URL,
       method,

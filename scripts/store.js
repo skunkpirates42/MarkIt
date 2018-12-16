@@ -1,5 +1,4 @@
 'use strict';
-/* global Bookmark*/
 const store = (function () {
 
   const addBookmark = function (bookmark) {

@@ -6,10 +6,10 @@ const templates = (function () {
   function generateControlsTemplate(obj) {
     const addingBookmark = `
       <form id="js-add-bookmark-form">
-        <h3>Create a Bookmark:</h3>
-        <input type="text" placeholder="title" name="title">
-        <input type="url" placeholder="url" name="url">
-        <textarea rows="4" col="50" name="desc" placeholder="enter your description here..."></textarea>
+        <h3 class="form-title">Create a Bookmark</h3>
+        <input class="text-input" type="text" placeholder="title" name="title">
+        <input class="text-input"type="url" placeholder="url" name="url">
+        <textarea class="text-input" rows="4" col="50" name="desc" placeholder="enter your description here..."></textarea>
         <div class="radio-container">
           <input type="radio" value=5 name="rating" id="rating5stars">
           <label for="rating5stars">5 stars</label>
@@ -22,13 +22,15 @@ const templates = (function () {
           <input type="radio" value=1 name="rating" id="rating1stars">
           <label for="rating1stars">1 stars</label>
         </div>
-        <button class="btn back-to-default">Back</button>
-        <button class="btn"type="submit">Submit</button>
+        <div class="form-button-container">
+          <button class="btn form-btn back-to-default">Back</button>
+          <button class="btn form-btn" type="submit">Submit</button>
+        </div>
       </form>
     `;
 
     const clearMinRating = '<button class="btn clear-min-rating">Clear Min Rating</button>';
-    const minRatingString = `Min Rating: ${store.minRating} ${clearMinRating}`;
+    const minRatingString = `<span class="min-rating">Min Rating: ${store.minRating} ${clearMinRating}</span>`;
     const defaultControlsView = `
       <button class="btn add-bookmark">Add Bookmark</button>
       <select class="min-rating">
